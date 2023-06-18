@@ -6,7 +6,7 @@ public enum InputFieldsComponent {
     NumberTaskJira("Номер задачи в Жире (прим. CKP-1234)"),
     GufVersion("Версия Гуфа (прим. 1)"),
     Preview ("Предпросмотр"),
-    LoginUserCheck ("Логин юзера (для проверки ДИБ)");
+    LoginUserCheck ("Поиск подстрок (для проверки ДИБ)");
     private final String value;
     InputFieldsComponent(String value) {
         this.value = value;

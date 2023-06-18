@@ -9,10 +9,15 @@ import java.io.Serial;
 
 @Component
 public class FolderTransferHandler extends TransferHandler {
+    private FolderPanelImpl folderPanel;
     private String pathToFolder = "";
 
     @Serial
     private static final long serialVersionUID = 1L;
+
+    void setFolderPanel(FolderPanelImpl folderPanel){
+        this.folderPanel = folderPanel;
+    }
 
     public boolean canImport(TransferHandler.TransferSupport support) {
         return support.isDataFlavorSupported(DataFlavor.javaFileListFlavor);
@@ -27,6 +32,7 @@ public class FolderTransferHandler extends TransferHandler {
         try {
             pathToFolder = transferable.getTransferData(DataFlavor.javaFileListFlavor).toString();
             pathToFolder = pathToFolder.substring(1, pathToFolder.length()-1);
+            folderPanel.setText(pathToFolder);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -34,9 +40,7 @@ public class FolderTransferHandler extends TransferHandler {
 
         return false;
     }
-
     public String getPathToFolder(){
         return pathToFolder;
     }
-
 }
