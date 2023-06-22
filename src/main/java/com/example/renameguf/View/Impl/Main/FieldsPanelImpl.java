@@ -17,7 +17,6 @@ import java.util.Map;
 public class FieldsPanelImpl extends JPanel implements PanelWithFields {
 
     DocumentListener listenerFields = new DocumentListener() {
-
         public void changedUpdate(DocumentEvent e) {
             updatePreview();
         }

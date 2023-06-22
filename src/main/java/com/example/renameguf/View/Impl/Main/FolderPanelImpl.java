@@ -5,7 +5,10 @@ import com.example.renameguf.View.PanelWithFields;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,10 +20,12 @@ public class FolderPanelImpl extends JTextArea implements PanelWithFields {
     public FolderPanelImpl(FolderTransferHandler folderTransferHandler){
         super(InputFieldsComponent.PathToFolder.getValue());
         this.folderTransferHandler = folderTransferHandler;
+        folderTransferHandler.setFolderPanel(this);
         setEditable(false);
         setLineWrap(true);
         setMargin(new Insets(20, 20, 20, 20));
         setTransferHandler(folderTransferHandler);
+
     }
 
     @Override

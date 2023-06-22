@@ -28,7 +28,7 @@ public class MainWindowImpl extends JFrame implements MainWindow<String> {
         setTitle("Гуф");
         setIconImage(new ImageIcon("src/main/resources/Icon/Guf.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 400);
+        setSize(1200, 500);
         setLocationRelativeTo(null);
         componentMap = creatingComponentMap(applicationContext.getBeansOfType(PanelWithFields.class));
         setContentPane(mainPanel);
@@ -72,6 +72,15 @@ public class MainWindowImpl extends JFrame implements MainWindow<String> {
             }
         }
         return fieldsMap;
+    }
+
+    @Override
+    public void blockButton() {
+        applicationContext.getBean("Button", ButtonPanelImpl.class).lockButtons();
+    }
+    @Override
+    public void unlockButton() {
+        applicationContext.getBean("Button", ButtonPanelImpl.class).unlockButtons();
     }
 
     @PostConstruct

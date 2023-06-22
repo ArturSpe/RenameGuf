@@ -1,6 +1,6 @@
 package com.example.renameguf.Services.Impl;
 
-import com.example.renameguf.Services.ZipManager;
+import com.example.renameguf.Services.PacketManager;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -8,14 +8,14 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 @Component
-public class ZipManagerImpl implements ZipManager {
+public class ZipManagerImpl implements PacketManager<ZipOutputStream> {
     @Override
-    public ZipOutputStream createZipArchive(String path) throws FileNotFoundException {
+    public ZipOutputStream createPacket(String path) throws FileNotFoundException {
         return new ZipOutputStream(new FileOutputStream(path + ".zip"));
     }
 
     @Override
-    public void createFileInZip(ZipOutputStream zip, File file, String name) {
+    public void createFileInPack(ZipOutputStream zip, File file, String name) {
         try (FileInputStream fis = new FileInputStream(file)) {
             ZipEntry zipEntry = new ZipEntry(name);
             zip.putNextEntry(zipEntry);

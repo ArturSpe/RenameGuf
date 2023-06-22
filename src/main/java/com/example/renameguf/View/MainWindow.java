@@ -6,7 +6,9 @@ import java.util.Map;
 
 public interface MainWindow <I> {
     Map<InputFieldsComponent, I> getValueFields();
-
     void clearField();
+
+    void blockButton();
+    void unlockButton();
 
 }
